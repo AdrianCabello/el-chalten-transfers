@@ -54,9 +54,8 @@ export interface Translations {
   capacity: string;
   // Services & Destinations
   servicesTitle: string;
-  servicesDescLine1: string;
-  servicesDescLine2: string;
-  servicesDescLine3: string;
+  servicesSubtitle: string;
+  servicesBody: string;
   servicesConsultUs: string;
   servicesConsultUsExtra: string;
   destinationsTitle: string;
@@ -151,11 +150,10 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     fleetSuvDesc: 'Comfortable transport for small groups.',
     capacity: 'Capacity',
     servicesTitle: 'Services',
-    servicesDescLine1: 'All services are private.',
-    servicesDescLine2: 'Punctual, safe and with',
-    servicesDescLine3: 'experienced local drivers.',
+    servicesSubtitle: 'Punctuality, Safety and Local Experience',
+    servicesBody: 'With years of experience in the sector, we specialize in point-to-point transport solutions. Our track record makes us the trusted strategic partner for tourism agencies, corporate groups and private transfers, always guaranteeing distinction on every journey.',
     servicesConsultUs: 'Contact us:',
-    servicesConsultUsExtra: 'Estancias, programs and others!',
+    servicesConsultUsExtra: 'Hotels, Estancias, programs and more!',
     destinationsTitle: 'Destinations',
     reviewsTitle: 'Reviews',
     faqTitle: 'Frequently Asked Questions',
@@ -241,11 +239,10 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     fleetSuvDesc: 'Transporte cómodo para grupos pequeños.',
     capacity: 'Capacidad',
     servicesTitle: 'Servicios',
-    servicesDescLine1: 'Todos los servicios son en privado.',
-    servicesDescLine2: 'Puntuales, seguros y con choferes',
-    servicesDescLine3: 'locales experimentados.',
+    servicesSubtitle: 'Puntualidad, Seguridad y Experiencia Local',
+    servicesBody: 'Con años de trayectoria en el sector, nos especializamos en ofrecer soluciones de transporte punto a punto. Nuestra experiencia nos avala como el socio estratégico de confianza para agencias de turismo, grupos corporativos y traslados particulares, garantizando siempre distinción en cada trayecto.',
     servicesConsultUs: 'Consultanos:',
-    servicesConsultUsExtra: 'Estancias, programas y otros!',
+    servicesConsultUsExtra: 'Hoteles, Estancias, programas y otros!',
     destinationsTitle: 'Destinos',
     reviewsTitle: 'Opiniones',
     faqTitle: 'Preguntas frecuentes',

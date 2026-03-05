@@ -10,6 +10,9 @@ export const DESTINATION_OPTIONS = [
   'M. Glaciarium / El Galpon del Glaciar',
   'H. Eolo / Puerto Punta Bandera',
   'Glaciar Perito Moreno',
+  'Rio Gallegos',
+  'Frontera Cancha Carrera',
+  'Frontera Rio Turbio',
   'Otro / Other',
 ] as const;
 

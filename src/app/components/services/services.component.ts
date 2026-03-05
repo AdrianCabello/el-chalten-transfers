@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { I18nService } from '../../core/services/i18n.service';
 import { getWhatsAppUrl } from '../../shared/constants/contact';
 
@@ -11,6 +11,7 @@ import { getWhatsAppUrl } from '../../shared/constants/contact';
 })
 export class ServicesComponent {
   readonly t = inject(I18nService).t;
+  readonly embedded = input(false);
 
   get consultUrl(): string {
     return getWhatsAppUrl(this.t().whatsappDefaultMessage);
