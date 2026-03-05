@@ -1,6 +1,6 @@
 .why-us {
   padding: 5rem 0;
-  background: #001225;
+  background: var(--color-white);
 }
 
 .features-grid {
@@ -45,11 +45,12 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
-  color: var(--color-white);
+  color: var(--color-text);
 }
 
 .feature p {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text);
+  opacity: 0.9;
   line-height: 1.5;
 }

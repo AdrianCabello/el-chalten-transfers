@@ -1,61 +1,46 @@
 <section id="contact" class="contact-section">
   <div class="container">
     <h2 class="section-title">{{ t().contactTitle }}</h2>
-    <form
-      id="contact-form"
-      class="contact-form"
-      (ngSubmit)="onSubmit($event)"
-    >
+    <div class="contact-form">
       <div class="form-row">
         <label for="contact-name">{{ t().contactName }}</label>
         <input
+          pInputText
           id="contact-name"
           type="text"
-          name="name"
-          class="form-field"
           [(ngModel)]="name"
-          required
-          minlength="3"
           [placeholder]="t().contactName"
+          class="contact-input"
         />
       </div>
       <div class="form-row">
         <label for="contact-email">{{ t().contactEmail }}</label>
         <input
+          pInputText
           id="contact-email"
           type="email"
-          name="email"
-          class="form-field"
           [(ngModel)]="email"
-          required
           [placeholder]="t().contactEmail"
+          class="contact-input"
         />
       </div>
       <div class="form-row">
-        <label for="contact-msg">{{ t().contactMessage }}</label>
+        <label for="contact-message">{{ t().contactMessage }}</label>
         <textarea
-          id="contact-msg"
-          name="message"
-          class="form-field"
-          rows="8"
+          pTextarea
+          id="contact-message"
           [(ngModel)]="message"
-          required
           [placeholder]="t().contactMessagePlaceholder"
+          [rows]="5"
+          class="contact-input"
         ></textarea>
       </div>
-      @if (statusMessage() === 'success') {
-        <p class="form-status form-status-success">{{ t().contactSuccess }}</p>
-      }
-      @if (statusMessage() === 'error') {
-        <p class="form-status form-status-error">{{ t().contactError }}</p>
-      }
-      <button
-        type="submit"
-        class="btn-primary btn-submit"
-        [disabled]="isSubmitting()"
+      <a
+        [href]="mailtoUrl"
+        class="btn-mailto"
       >
-        {{ isSubmitting() ? t().sending : t().btnSendInquiry }}
-      </button>
-    </form>
+        {{ t().btnSendInquiry }}
+      </a>
+    </div>
   </div>
 </section>

@@ -105,7 +105,14 @@
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 8px;
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 
   span {
     width: 24px;
@@ -121,6 +128,8 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1998;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   &.open {
     display: block;

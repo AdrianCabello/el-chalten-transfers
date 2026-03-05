@@ -1,0 +1,33 @@
+.services {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #1a2a3a 0%, #002347 100%);
+}
+
+.services-desc {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+  max-width: 600px;
+}
+
+.services-cta {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 1.5rem;
+}
+
+.consult-link {
+  color: var(--color-highlight);
+  font-weight: 700;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #f5d547;
+  }
+}
+
+.services .section-title {
+  color: var(--color-white);
+  border-bottom-color: var(--color-accent);
+}

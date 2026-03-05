@@ -84,3 +84,31 @@ Comprueba que:
 
 - Revisa los logs del contenedor.
 - Comprueba que el **Port** configurado en Dokploy (ej. 4000) coincida con el que expone la aplicación.
+
+### Error: "Your connection is not private" / NET::ERR_CERT_AUTHORITY_INVALID
+
+Este error indica que el certificado SSL no es válido o no está confiado por un CA (Let's Encrypt). Causas habituales:
+
+1. **DNS apuntó después de añadir el dominio**  
+   El dominio debe apuntar al IP del servidor **antes** de añadirlo en Dokploy. Si lo añadiste antes, Let's Encrypt no pudo verificar el dominio y el certificado no se generó.
+
+   **Solución:**  
+   - Elimina el dominio en Dokploy  
+   - Revisa que `elchaltentransfers.com` apunte al IP del servidor (registro A o CNAME)  
+   - Espera un poco a que se propague el DNS  
+   - Añade de nuevo el dominio en Dokploy  
+   - Revisa los logs de Traefik para ver si Let's Encrypt genera el certificado
+
+2. **HTTPS desactivado o sin certificado**  
+   En la configuración del dominio en Dokploy, verifica que:
+   - El toggle **HTTPS** esté activado  
+   - El proveedor de certificado sea **Let's Encrypt** (o el que uses)  
+   - No uses `Ports` en Advanced Settings si no es necesario
+
+3. **Certificado expirado o mal generado**  
+   - Elimina el dominio y vuelve a crearlo  
+   - Reinicia Traefik desde el panel de Dokploy  
+   - Revisa los logs de Traefik para errores de ACME/Let's Encrypt
+
+4. **HSTS**  
+   Si el sitio ya usó HSTS antes, Chrome recordará que debe usarse HTTPS. Si el certificado falla, no permitirá bypass. Hay que corregir el certificado en el servidor.

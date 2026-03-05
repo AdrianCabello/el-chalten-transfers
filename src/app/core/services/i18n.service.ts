@@ -6,6 +6,7 @@ export interface Translations {
   // Nav
   navHome: string;
   navDestinations: string;
+  navServices: string;
   navWhyUs: string;
   navFleet: string;
   navDestinationsList: string;
@@ -75,12 +76,19 @@ export interface Translations {
   contactTitle: string;
   contactName: string;
   contactEmail: string;
+  contactPhone: string;
   contactMessage: string;
   contactMessagePlaceholder: string;
   btnSendInquiry: string;
   sending: string;
   contactSuccess: string;
   contactError: string;
+  luggageTrekking: string;
+  luggageClimbing: string;
+  luggageSki: string;
+  luggageTourism: string;
+  luggageOther: string;
+  contactAdditionalNotes: string;
   // Footer
   footerBookings: string;
   footerFollow: string;
@@ -93,6 +101,7 @@ const TRANSLATIONS: Record<Lang, Translations> = {
   en: {
     navHome: 'Home',
     navDestinations: 'Destinations',
+    navServices: 'Services',
     navWhyUs: 'Why Us',
     navFleet: 'Fleet',
     navDestinationsList: 'Destinations',
@@ -161,12 +170,19 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     contactTitle: 'Contact / Book',
     contactName: 'Name',
     contactEmail: 'Email',
+    contactPhone: 'Phone',
     contactMessage: 'Message',
-    contactMessagePlaceholder: 'Please include:\nOrigin and destination\nDate and time\nNumber of passengers\nType of luggage (trekking, climbing, ski)',
+    contactMessagePlaceholder: 'Write your message here. Include origin, destination, date, passengers and any details.',
     btnSendInquiry: 'Send Inquiry',
     sending: 'Sending...',
     contactSuccess: 'Thank you! We will contact you soon.',
     contactError: 'Something went wrong. Please try again or contact us via WhatsApp.',
+    luggageTrekking: 'Trekking',
+    luggageClimbing: 'Climbing',
+    luggageSki: 'Ski',
+    luggageTourism: 'Tourism',
+    luggageOther: 'Other',
+    contactAdditionalNotes: 'Additional notes (optional)',
     footerBookings: 'Inquiries / Bookings',
     footerFollow: 'Follow us',
     whatsappFloatingText: 'Book via WhatsApp',
@@ -175,6 +191,7 @@ const TRANSLATIONS: Record<Lang, Translations> = {
   es: {
     navHome: 'Inicio',
     navDestinations: 'Destinos',
+    navServices: 'Servicios',
     navWhyUs: 'Por qué nosotros',
     navFleet: 'Flota',
     navDestinationsList: 'Destinos',
@@ -243,12 +260,19 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     contactTitle: 'Contacto / Reserva',
     contactName: 'Nombre',
     contactEmail: 'Email',
+    contactPhone: 'Teléfono',
     contactMessage: 'Mensaje',
-    contactMessagePlaceholder: 'Por favor incluir:\nOrigen y destino\nFecha y hora\nCantidad de pasajeros\nTipo de equipaje (trekking, escalada, esquí)',
+    contactMessagePlaceholder: 'Escribe tu mensaje. Incluye origen, destino, fecha, pasajeros y cualquier detalle.',
     btnSendInquiry: 'Enviar consulta',
     sending: 'Enviando...',
     contactSuccess: '¡Gracias! Te contactaremos pronto.',
     contactError: 'Algo salió mal. Por favor intenta de nuevo o contáctanos por WhatsApp.',
+    luggageTrekking: 'Trekking',
+    luggageClimbing: 'Escalada',
+    luggageSki: 'Esquí',
+    luggageTourism: 'Turismo',
+    luggageOther: 'Otro',
+    contactAdditionalNotes: 'Notas adicionales (opcional)',
     footerBookings: 'Consultas / Reservas',
     footerFollow: 'Seguinos',
     whatsappFloatingText: 'Reservar por WhatsApp',

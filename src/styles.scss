@@ -26,15 +26,20 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--scroll-padding-top);
-  background-color: var(--color-footer);
+  background-color: var(--color-white);
+}
+
+body.nav-menu-open {
+  overflow: hidden;
 }
 
 body {
+  position: relative;
   font-family: var(--font-main);
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
-  background-color: var(--color-footer);
+  background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -69,12 +74,12 @@ button {
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 4px;
-  border-bottom: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-header);
   padding-bottom: 0.5rem;
   margin-bottom: 2rem;
   display: inline-block;
   font-size: 1.15rem;
-  color: var(--color-white);
+  color: var(--color-text);
 }
 
 .btn-primary {
@@ -120,28 +125,45 @@ button {
 .form-field {
   width: 100%;
   padding: 1rem;
-  border: 1px solid rgba(52, 152, 219, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   font-family: var(--font-main);
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
-  background: rgba(0, 35, 71, 0.4);
-  color: var(--color-white);
+  background: var(--color-white);
+  color: var(--color-text);
 
   &:focus {
     border-color: var(--color-accent);
-    background: rgba(0, 35, 71, 0.6);
+    background: var(--color-white);
   }
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-muted);
   }
 }
 
 textarea.form-field {
   min-height: 120px;
   resize: vertical;
+}
+
+/* Contact form: inputs con fondo claro */
+.contact-section {
+  .p-inputtext,
+  .p-inputtextarea,
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    background: #fff !important;
+    color: var(--color-text) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+
+    &::placeholder {
+      color: var(--color-text-muted) !important;
+    }
+  }
 }
 
 /* Scroll reveal: animación al entrar en viewport */
