@@ -2,8 +2,8 @@
   <div class="container">
     <h2 class="section-title">{{ t().fleetTitle }}</h2>
     <div class="fleet-grid">
-      @for (v of vehicles; track v.nameKey) {
-        <article class="vehicle-card">
+      @for (v of vehicles; track v.nameKey; let i = $index) {
+        <article class="vehicle-card" appScrollReveal [appScrollReveal]="i * 0.1">
           <div class="vehicle-image" [style.backgroundImage]="'url(' + v.image + ')'" [attr.aria-label]="t()[v.nameKey]"></div>
           <div class="vehicle-content">
             <h3>{{ t()[v.nameKey] }}</h3>

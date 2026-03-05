@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from '../../core/services/i18n.service';
-
 interface Destination {
   name: string;
   highlight?: boolean;

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from '../../core/services/i18n.service';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 export interface Vehicle {
   nameKey: keyof import('../../core/services/i18n.service').Translations;
@@ -11,6 +12,7 @@ export interface Vehicle {
 @Component({
   selector: 'app-fleet',
   standalone: true,
+  imports: [ScrollRevealDirective],
   templateUrl: './fleet.component.html',
   styleUrl: './fleet.component.scss',
 })
@@ -19,12 +21,6 @@ export class FleetComponent {
   readonly t = this.i18n.t;
 
   readonly vehicles: Vehicle[] = [
-    {
-      nameKey: 'fleetHilux',
-      descKey: 'fleetHiluxDesc',
-      capacity: '4 pax',
-      image: '/images/slider6.jpg',
-    },
     {
       nameKey: 'fleetSprinter',
       descKey: 'fleetSprinterDesc',

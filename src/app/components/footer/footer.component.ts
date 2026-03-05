@@ -9,7 +9,6 @@ import {
   ADDRESS_CITY,
   INSTAGRAM_URL,
 } from '../../shared/constants/contact';
-
 @Component({
   selector: 'app-footer',
   standalone: true,

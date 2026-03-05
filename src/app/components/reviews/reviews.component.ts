@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from '../../core/services/i18n.service';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-reviews',
   standalone: true,
+  imports: [ScrollRevealDirective],
   templateUrl: './reviews.component.html',
   styleUrl: './reviews.component.scss',
 })

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from '../../core/services/i18n.service';
 import { getWhatsAppUrl } from '../../shared/constants/contact';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 export interface RouteItem {
   from: string;
@@ -14,6 +15,7 @@ export interface RouteItem {
 @Component({
   selector: 'app-popular-routes',
   standalone: true,
+  imports: [ScrollRevealDirective],
   templateUrl: './popular-routes.component.html',
   styleUrl: './popular-routes.component.scss',
 })

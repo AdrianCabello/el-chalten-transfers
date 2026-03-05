@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from '../../core/services/i18n.service';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 type FaqKey = 'faqQ1' | 'faqQ2' | 'faqQ3' | 'faqQ4' | 'faqA1' | 'faqA2' | 'faqA3' | 'faqA4';
 
 @Component({
   selector: 'app-faq',
   standalone: true,
+  imports: [ScrollRevealDirective],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
 })

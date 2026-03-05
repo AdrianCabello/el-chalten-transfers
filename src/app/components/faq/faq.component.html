@@ -2,9 +2,9 @@
   <div class="container">
     <h2 class="section-title">{{ t().faqTitle }}</h2>
     <div class="faq-list">
-      @for (item of faqItems; track $index) {
-        <div class="faq-item" [class.open]="expanded === $index">
-          <button type="button" class="faq-question" (click)="toggle($index)" [attr.aria-expanded]="expanded === $index">
+      @for (item of faqItems; track $index; let i = $index) {
+        <div class="faq-item" [class.open]="expanded === i" appScrollReveal [appScrollReveal]="i * 0.06">
+          <button type="button" class="faq-question" (click)="toggle(i)" [attr.aria-expanded]="expanded === i">
             {{ t()[item.q] }}
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>

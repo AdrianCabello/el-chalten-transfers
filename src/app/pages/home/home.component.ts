@@ -10,7 +10,6 @@ import { FaqComponent } from '../../components/faq/faq.component';
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/whatsapp-floating.component';
-
 @Component({
   selector: 'app-home',
   standalone: true,

@@ -2,8 +2,8 @@
   <div class="container">
     <h2 class="section-title">{{ t().popularRoutesTitle }}</h2>
     <div class="routes-grid">
-      @for (route of routes; track route.from + route.to) {
-        <article class="route-card">
+      @for (route of routes; track route.from + route.to; let i = $index) {
+        <article class="route-card" appScrollReveal [appScrollReveal]="i * 0.08">
           <div class="route-image" [style.backgroundImage]="'url(' + route.image + ')'" role="img" [attr.aria-label]="route.from + ' to ' + route.to"></div>
           <div class="route-overlay"></div>
           <div class="route-content">
