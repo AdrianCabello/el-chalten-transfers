@@ -1,6 +1,9 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export type Lang = 'es' | 'en';
+
+const STORAGE_KEY = 'el-chalten-lang';
 
 export interface Translations {
   // Nav
@@ -279,13 +282,31 @@ const TRANSLATIONS: Record<Lang, Translations> = {
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
+  private readonly platformId = inject(PLATFORM_ID);
   private readonly currentLang = signal<Lang>('en');
 
   readonly lang = this.currentLang.asReadonly();
   readonly t = computed(() => TRANSLATIONS[this.currentLang()]);
 
+  constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      const stored = localStorage.getItem(STORAGE_KEY) as Lang | null;
+      if (stored === 'es' || stored === 'en') {
+        this.currentLang.set(stored);
+      } else {
+        const browserLang = navigator.language ?? (navigator as { userLanguage?: string }).userLanguage ?? '';
+        if (browserLang.toLowerCase().startsWith('es')) {
+          this.currentLang.set('es');
+        }
+      }
+    }
+  }
+
   setLang(lang: Lang): void {
     this.currentLang.set(lang);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(STORAGE_KEY, lang);
+    }
   }
 
   toggleLang(): void {
