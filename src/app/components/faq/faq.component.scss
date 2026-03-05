@@ -20,7 +20,8 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1.25rem 0;
   text-align: left;
   font-family: var(--font-main);
@@ -36,7 +37,14 @@
   }
 }
 
+.faq-question-text {
+  flex: 1;
+  min-width: 0;
+  padding-right: 0.25rem;
+}
+
 .faq-icon {
+  flex-shrink: 0;
   font-size: 1.5rem;
   line-height: 1;
   color: var(--color-accent);

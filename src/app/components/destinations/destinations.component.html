@@ -1,30 +1,32 @@
 <section id="destinations" class="destinations-hero">
   <div class="main-grid">
-    <div class="services-col">
-      <h2 class="column-title">{{ t().servicesTitle }}</h2>
-      <p class="services-text">
-        {{ t().servicesDescLine1 }}<br />
-        {{ t().servicesDescLine2 }}<br />
-        {{ t().servicesDescLine3 }}<br /><br />
-        <span class="highlight-accent">{{ t().servicesConsultUs }}</span>
-        {{ t().servicesConsultUsExtra }}
-      </p>
-    </div>
-
     <div class="destinations-col">
       <h2 class="column-title">{{ t().destinationsTitle }}</h2>
       <div class="destinations-subgrid">
         <ul>
           @for (dest of destinationsColumn1; track dest.name) {
-            <li [class.highlight]="dest.highlight">{{ dest.name }}</li>
+            <li
+              [class.highlight]="dest.highlight"
+              (mouseenter)="onDestinationHover(dest)"
+              (mouseleave)="onDestinationHover(null)"
+            >
+              {{ dest.name }}
+            </li>
           }
         </ul>
         <ul>
           @for (dest of destinationsColumn2; track dest.name) {
-            <li [class.highlight]="dest.highlight">{{ dest.name }}</li>
+            <li
+              [class.highlight]="dest.highlight"
+              (mouseenter)="onDestinationHover(dest)"
+              (mouseleave)="onDestinationHover(null)"
+            >
+              {{ dest.name }}
+            </li>
           }
         </ul>
       </div>
     </div>
+    <div class="map-col" #mapContainer></div>
   </div>
 </section>

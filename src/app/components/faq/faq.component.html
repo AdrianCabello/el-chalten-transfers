@@ -5,7 +5,7 @@
       @for (item of faqItems; track $index; let i = $index) {
         <div class="faq-item" [class.open]="expanded === i" appScrollReveal [appScrollReveal]="i * 0.06">
           <button type="button" class="faq-question" (click)="toggle(i)" [attr.aria-expanded]="expanded === i">
-            {{ t()[item.q] }}
+            <span class="faq-question-text">{{ t()[item.q] }}</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">

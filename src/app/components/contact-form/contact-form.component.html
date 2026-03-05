@@ -4,10 +4,8 @@
     <form
       id="contact-form"
       class="contact-form"
-      action="https://formspree.io/f/xjvnqkwe"
-      method="POST"
+      (ngSubmit)="onSubmit($event)"
     >
-      <input type="hidden" name="_subject" value="El Chaltén Transfers - Consulta" />
       <div class="form-row">
         <label for="contact-name">{{ t().contactName }}</label>
         <input
@@ -45,7 +43,19 @@
           [placeholder]="t().contactMessagePlaceholder"
         ></textarea>
       </div>
-      <button type="submit" class="btn-primary btn-submit">{{ t().btnSendInquiry }}</button>
+      @if (statusMessage() === 'success') {
+        <p class="form-status form-status-success">{{ t().contactSuccess }}</p>
+      }
+      @if (statusMessage() === 'error') {
+        <p class="form-status form-status-error">{{ t().contactError }}</p>
+      }
+      <button
+        type="submit"
+        class="btn-primary btn-submit"
+        [disabled]="isSubmitting()"
+      >
+        {{ isSubmitting() ? t().sending : t().btnSendInquiry }}
+      </button>
     </form>
   </div>
 </section>

@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap';
+@import 'leaflet/dist/leaflet.css';
 
 :root {
   --color-header: #002347;
@@ -25,6 +26,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--scroll-padding-top);
+  background-color: var(--color-footer);
 }
 
 body {
@@ -32,6 +34,7 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
+  background-color: var(--color-footer);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -57,7 +60,7 @@ button {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 5%;
 }

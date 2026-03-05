@@ -78,6 +78,8 @@ export interface Translations {
   contactMessagePlaceholder: string;
   btnSendInquiry: string;
   sending: string;
+  contactSuccess: string;
+  contactError: string;
   // Footer
   footerBookings: string;
   footerFollow: string;
@@ -153,6 +155,8 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     contactMessagePlaceholder: 'Please include:\nOrigin and destination\nDate and time\nNumber of passengers\nType of luggage (trekking, climbing, ski)',
     btnSendInquiry: 'Send Inquiry',
     sending: 'Sending...',
+    contactSuccess: 'Thank you! We will contact you soon.',
+    contactError: 'Something went wrong. Please try again or contact us via WhatsApp.',
     footerBookings: 'Inquiries / Bookings',
     footerFollow: 'Follow us',
     whatsappFloatingText: 'Book via WhatsApp',
@@ -224,6 +228,8 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     contactMessagePlaceholder: 'Por favor incluir:\nOrigen y destino\nFecha y hora\nCantidad de pasajeros\nTipo de equipaje (trekking, escalada, esquí)',
     btnSendInquiry: 'Enviar consulta',
     sending: 'Enviando...',
+    contactSuccess: '¡Gracias! Te contactaremos pronto.',
+    contactError: 'Algo salió mal. Por favor intenta de nuevo o contáctanos por WhatsApp.',
     footerBookings: 'Consultas / Reservas',
     footerFollow: 'Seguinos',
     whatsappFloatingText: 'Reservar por WhatsApp',
