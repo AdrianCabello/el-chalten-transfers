@@ -25,5 +25,8 @@ export class App implements OnInit {
       content:
         'transfer el chalten, private transfer patagonia, el calafate to el chalten transfer, transfer aeropuerto el calafate, patagonia private driver',
     });
+    this.meta.updateTag({ property: 'og:image', content: '/Icons/android-chrome-512x512.png' });
+    this.meta.updateTag({ property: 'og:image:width', content: '512' });
+    this.meta.updateTag({ property: 'og:image:height', content: '512' });
   }
 }

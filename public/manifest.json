@@ -1,0 +1,21 @@
+{
+  "name": "UP Transfers Patagonia",
+  "short_name": "UP Transfers",
+  "description": "Private transfers between El Calafate, El Chaltén and Patagonia destinations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#002347",
+  "theme_color": "#002347",
+  "icons": [
+    {
+      "src": "/Icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
