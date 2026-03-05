@@ -17,6 +17,7 @@ export interface Translations {
   heroTitle: string;
   heroSubtitle: string;
   heroText: string;
+  heroSlides: { h1: string; p: string }[];
   btnGetQuote: string;
   btnBookWhatsApp: string;
   // Quick form
@@ -102,6 +103,15 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     heroTitle: 'Private Transfers in Patagonia',
     heroSubtitle: 'El Calafate – El Chaltén – Glaciers',
     heroText: 'Private and comfortable transfers with local experienced drivers.',
+    heroSlides: [
+      { h1: 'Track Record', p: 'Over 10 years exploring the south' },
+      { h1: 'Safety', p: 'Units equipped for the Patagonian climate' },
+      { h1: 'Punctuality', p: 'Your itinerary is sacred to us' },
+      { h1: 'Comfort', p: 'Long-distance travel without fatigue' },
+      { h1: 'Experience', p: 'We know every corner of the route' },
+      { h1: 'Landscapes', p: 'Enjoy the view while we drive' },
+      { h1: 'Commitment', p: 'Quality service in every mile' },
+    ],
     btnGetQuote: 'Get a Quote',
     btnBookWhatsApp: 'Book via WhatsApp',
     formFrom: 'From',
@@ -175,6 +185,15 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     heroTitle: 'Transfers privados en Patagonia',
     heroSubtitle: 'El Calafate – El Chaltén – Glaciares',
     heroText: 'Transfers privados y cómodos con conductores locales experimentados.',
+    heroSlides: [
+      { h1: 'Trayectoria', p: 'Más de 10 años recorriendo el sur' },
+      { h1: 'Seguridad', p: 'Unidades equipadas para el clima patagónico' },
+      { h1: 'Puntualidad', p: 'Tu itinerario es sagrado para nosotros' },
+      { h1: 'Confort', p: 'Viajes de larga distancia sin fatiga' },
+      { h1: 'Experiencia', p: 'Conocemos cada rincón de la ruta' },
+      { h1: 'Paisajes', p: 'Disfruta el camino mientras nosotros conducimos' },
+      { h1: 'Compromiso', p: 'Calidad de servicio en cada kilómetro' },
+    ],
     btnGetQuote: 'Pedir presupuesto',
     btnBookWhatsApp: 'Reservar por WhatsApp',
     formFrom: 'Origen',

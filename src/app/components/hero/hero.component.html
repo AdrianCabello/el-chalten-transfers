@@ -1,6 +1,17 @@
 <section id="hero" class="hero">
-  <div class="hero-bg" role="img" aria-label="Patagonia landscape"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-slider">
+    @for (slide of slides(); track $index) {
+      <div
+        class="hero-slide"
+        [class.active]="currentIndex() === $index"
+        [style.backgroundImage]="'url(' + slide.image + ')'"
+        role="img"
+        [attr.aria-label]="slide.h1 + ' - ' + slide.p"
+      >
+        <div class="hero-overlay"></div>
+      </div>
+    }
+  </div>
   <div class="hero-content container">
     <h1 class="hero-title">{{ t().heroTitle }}</h1>
     <p class="hero-subtitle">{{ t().heroSubtitle }}</p>
@@ -13,5 +24,9 @@
         {{ t().btnBookWhatsApp }}
       </a>
     </div>
+  </div>
+  <div class="hero-slide-text">
+    <span class="hero-slide-label">{{ slides()[currentIndex()]?.h1 }}</span>
+    <span class="hero-slide-desc">{{ slides()[currentIndex()]?.p }}</span>
   </div>
 </section>
