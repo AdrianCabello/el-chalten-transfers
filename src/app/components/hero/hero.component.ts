@@ -11,7 +11,7 @@ import { I18nService } from '../../core/services/i18n.service';
 import { getWhatsAppUrl } from '../../shared/constants/contact';
 
 const SLIDER_IMAGES = [
-  '/images/slider1.JPG',
+  '/images/slider1.jpg',
   '/images/slider2.jpg',
   '/images/slider3.jpg',
   '/images/slider4.jpg',
