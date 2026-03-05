@@ -1,0 +1,46 @@
+<header class="navbar">
+  <a href="#hero" class="brand" aria-label="El Chaltén Transfers - Home">
+    <img src="logo.png" alt="Logo UP Transfers" class="logo" />
+    <div class="brand-text">
+      <span class="brand-name">Transfers</span>
+      <span class="slogan">{{ t().slogan }}</span>
+    </div>
+  </a>
+  <nav class="nav-links">
+    <a href="#routes">{{ t().navDestinations }}</a>
+    <a href="#why-us">{{ t().navWhyUs }}</a>
+    <a href="#fleet">{{ t().navFleet }}</a>
+    <a href="#destinations">{{ t().navDestinationsList }}</a>
+    <a href="#reviews">{{ t().navReviews }}</a>
+    <a href="#faq">{{ t().navFaq }}</a>
+    <a href="#contact">{{ t().navContact }}</a>
+    <div class="lang-selector">
+      <button type="button" (click)="setLang('es')" [class.active]="lang() === 'es'" title="Español" aria-label="Español">
+        <img src="https://flagcdn.com/w40/es.png" alt="ES" width="20" height="15" />
+      </button>
+      <button type="button" (click)="setLang('en')" [class.active]="lang() === 'en'" title="English" aria-label="English">
+        <img src="https://flagcdn.com/w40/gb.png" alt="EN" width="20" height="15" />
+      </button>
+    </div>
+  </nav>
+  <button type="button" class="nav-toggle" aria-label="Menu" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+@if (menuOpen) {
+  <div class="nav-overlay open" (click)="menuOpen = false" role="button" tabindex="0" aria-label="Close menu"></div>
+  <nav class="nav-mobile open">
+    <a href="#hero" (click)="menuOpen = false">{{ t().navHome }}</a>
+    <a href="#routes" (click)="menuOpen = false">{{ t().navDestinations }}</a>
+    <a href="#why-us" (click)="menuOpen = false">{{ t().navWhyUs }}</a>
+    <a href="#fleet" (click)="menuOpen = false">{{ t().navFleet }}</a>
+    <a href="#destinations" (click)="menuOpen = false">{{ t().navDestinationsList }}</a>
+    <a href="#reviews" (click)="menuOpen = false">{{ t().navReviews }}</a>
+    <a href="#faq" (click)="menuOpen = false">{{ t().navFaq }}</a>
+    <a href="#contact" (click)="menuOpen = false">{{ t().navContact }}</a>
+    <div class="lang-selector-mobile">
+      <button type="button" (click)="setLang('es'); menuOpen = false" [class.active]="lang() === 'es'">ES</button>
+      <button type="button" (click)="setLang('en'); menuOpen = false" [class.active]="lang() === 'en'">EN</button>
+    </div>
+  </nav>
+}

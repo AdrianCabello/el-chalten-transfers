@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP Transfers | El Chaltén & Calafate | Patagonia Argentina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Montserrat', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #002347;
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .brand-container { 
+            display: flex; 
+            align-items: center; 
+            flex-shrink: 0; 
+            cursor: pointer; 
+            text-decoration: none; 
+            color: inherit;
+            transition: opacity 0.3s;
+        }
+        .brand-container:hover { opacity: 0.8; }
+        
+        .logo-img { height: 60px; width: auto; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)); }
+        .text-group { display: flex; flex-direction: column; align-items: center; margin-left: 15px; }
+        #logo-text { font-weight: 300; font-size: 1.31rem; letter-spacing: 4px; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+        .slogan { font-weight: 400; font-size: 0.44rem; text-transform: uppercase; letter-spacing: 0.5px; color: #3498db; line-height: 1; }
+
+        nav { display: flex; align-items: center; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; white-space: nowrap; }
+        nav a:hover { color: #3498db; }
+
+        .lang-selector { display: flex; gap: 10px; margin-left: 20px; align-items: center; flex-wrap: nowrap; }
+        .lang-btn { cursor: pointer; height: 14px; width: auto; transition: 0.3s; opacity: 0.8; flex-shrink: 0; }
+        .lang-btn:hover { opacity: 1; transform: scale(1.1); }
+
+        /* --- SLIDER --- */
+        .slider-container { position: relative; width: 100%; height: 100vh; overflow: hidden; background-color: #000; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background-size: cover; background-position: center; }
+        .slide.active { opacity: 1; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(transparent 50%, rgba(0,0,0,0.8)); }
+        .slide-content { position: absolute; bottom: 80px; left: 5%; z-index: 10; color: white; }
+        .slide-content h1 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; margin-bottom: 5px; }
+        .slide-content p { font-size: 0.76rem; font-weight: 400; letter-spacing: 3px; opacity: 0.95; text-transform: uppercase; }
+
+        /* --- DESTINOS Y SERVICIOS --- */
+        .destinos-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('img/destinos1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 120px 5% 60px 5%;
+            color: white;
+        }
+
+        .main-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 1200px;
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
+        }
+
+        .servicios-col { text-align: left; }
+
+        .column-title {
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 1px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+            display: inline-block;
+            font-size: 1.15rem;
+        }
+
+        .servicios-texto { 
+            font-weight: 300; 
+            font-size: 0.95rem; 
+            line-height: 2.2; 
+            letter-spacing: 1px; 
+        }
+        
+        .destinos-subgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 30px;
+            list-style: none;
+        }
+
+        .destinos-subgrid li {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 400;
+            border-left: 2px solid rgba(52, 152, 219, 0.4);
+            padding-left: 10px;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        .highlight { color: #f1c40f; font-weight: 700; }
+        /* Nueva clase para amarillo sin negrita */
+        .highlight-light { color: #f1c40f; font-weight: 300; }
+
+        /* --- CONTACTO --- */
+        .contacto { padding: 80px 10%; text-align: center; background: white; }
+        .contacto h2 { margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; }
+        .contacto form { max-width: 600px; margin: auto; display: grid; gap: 15px; }
+        input, textarea { padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 1rem; outline: none; }
+        
+        .btn-enviar { 
+            background: #002347; 
+            color: white; 
+            border: none; 
+            padding: 18px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s;
+        }
+        .btn-enviar:hover { background: #3498db; }
+        .btn-enviar:disabled { background: #ccc; cursor: not-allowed; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #001a35; color: white; padding: 50px 5%; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr 0.8fr; gap: 40px; }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+        .footer-col-left, .footer-col-mid { border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; }
+        .footer-col-left p { margin-bottom: 12px; line-height: 1.4; }
+        .footer-detail { font-size: 0.85rem; margin-bottom: 8px; color: #bdc3c7; }
+        .footer-detail a { color: #bdc3c7; text-decoration: none; transition: 0.3s; }
+        .footer-detail a:hover { color: #3498db; }
+        .seguinos-text { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: white; margin-bottom: 15px; font-weight: 700; }
+        
+        /* BOTON WHATSAPP */
+        .wpp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 3000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
+        .wpp-btn:hover { transform: scale(1.1); }
+
+        @media (max-width: 900px) {
+            header { padding: 10px 3%; }
+            #logo-text { font-size: 1.1rem; }
+            nav a { margin-left: 10px; font-size: 0.65rem; }
+            .main-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-col-left, .footer-col-mid { border-right: none; padding-right: 0; }
+        }
+    </style>
+</head>
+<body id="top">
+
+<header>
+    <a href="#top" class="brand-container">
+        <img src="logo.png" alt="Logo UP Transfers" class="logo-img" onerror="this.style.visibility='hidden'">
+        <div class="text-group">
+            <span id="logo-text">Transfers</span>
+            <span class="slogan" data-key="slogan">Desde 2014 recorriendo Patagonia</span>
+        </div>
+    </a>
+    <nav>
+        <a href="#destinos" data-key="nav-destinos">Destinos</a>
+        <a href="#contacto" data-key="nav-contacto">Contacto</a>
+        <div class="lang-selector">
+            <img src="https://flagcdn.com/es.svg" class="lang-btn" onclick="changeLang('es')" title="Español">
+            <img src="https://flagcdn.com/gb.svg" class="lang-btn" onclick="changeLang('en')" title="English">
+        </div>
+    </nav>
+</header>
+
+<div class="slider-container" id="slider-main"></div>
+
+<section id="destinos" class="destinos-hero">
+    <div class="main-grid">
+        <div class="servicios-col">
+            <h2 class="column-title" data-key="servicios-title">Servicios</h2>
+            <p class="servicios-texto" data-key="servicios-desc">
+                Todos los servicios son en privado.<br>
+                Puntuales, seguros y con choferes<br>
+                locales experimentados.<br><br>
+                <span class="highlight-light">Consultanos:</span> Estancias, programas y otros!
+            </p>
+        </div>
+
+        <div class="destinos-col">
+            <h2 class="column-title" data-key="destinos-title">Destinos</h2>
+            <div class="destinos-subgrid">
+                <ul>
+                    <li class="highlight">Aeropuerto / Ciudad de El Calafate</li>
+                    <li class="highlight">El Chaltén</li>
+                    <li>Est. Bonanza / Eco Domes / H. El Pilar</li>
+                    <li>P. Río Eléctrico / H. Explora</li>
+                    <li>Rva. Los Huemules / Lago del Desierto</li>
+                    <li>Ref. Valle del Crestón</li>
+                </ul>
+                <ul>
+                    <li>Est. La Quinta / Chaltén Camp</li>
+                    <li>Bahía Tunel / La Leona</li>
+                    <li>M. Glaciarium / El Galpon del Glaciar</li>
+                    <li>H. Eolo / Puerto Punta Bandera</li>
+                    <li>Glaciar Perito Moreno</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="contacto">
+    <h2 data-key="contacto-title">Contacto</h2>
+    <form id="contact-form" action="https://formspree.io/f/reservas@elchaltentransfers.com" method="POST">
+        <input type="text" name="name" data-placeholder="ph-name" placeholder="Nombre completo" required minlength="3">
+        <input type="email" name="email" data-placeholder="ph-email" placeholder="Correo electrónico" required>
+        <textarea name="message" rows="8" data-placeholder="ph-msg" placeholder="Por favor, indícanos:&#10;• Origen y Destino&#10;• Fecha y Hora&#10;• Cantidad de pasajeros&#10;• Tipo de equipaje (ej: turismo, escalada, esquí)" required></textarea>
+        <button type="submit" id="btn-submit" class="btn-enviar" data-key="btn-send">ENVIAR CONSULTA</button>
+    </form>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col footer-col-left">
+            <p style="font-weight: 700;">Carolina Cervetta</p>
+            <p style="font-size: 0.75rem; color: #3498db; text-transform: uppercase; font-weight: 400;" data-key="footer-bookings">Consultas / Reservas</p>
+            <p style="font-weight: 400; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase;">UP Transfers</p>
+        </div>
+        <div class="footer-col footer-col-mid">
+            <p class="footer-detail"><a href="https://wa.me/5492966724361">T: +54 9 2966 724361</a></p>
+            <p class="footer-detail"><a href="mailto:reservas@elchaltentransfers.com">M: reservas@elchaltentransfers.com</a></p>
+            <p class="footer-detail">Comandante Arrua 370</p>
+            <p class="footer-detail">El Chaltén, Santa Cruz, Argentina</p>
+        </div>
+        <div class="footer-col footer-col-right">
+            <span class="seguinos-text" data-key="footer-follow">Seguinos</span>
+            <a href="https://www.instagram.com/el_chalten_transfers/" target="_blank">
+                <svg width="38" height="38" viewBox="0 0 448 512">
+                    <defs>
+                        <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#f09433;" />
+                            <stop offset="100%" style="stop-color:#bc1888;" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#ig-grad)" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/5492966724361" class="wpp-btn" target="_blank">
+    <svg width="35" height="35" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-93.9-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.4-16.5-14.7-27.6-32.8-30.8-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.3 3.7-5.5 5.5-9.2 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.1 10.7-1.7 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+
+<script>
+    const texts = {
+        es: {
+            "slogan": "Desde 2014 recorriendo Patagonia",
+            "nav-destinos": "Destinos", "nav-contacto": "Contacto",
+            "servicios-title": "Servicios",
+            "servicios-desc": "Todos los servicios son en privado.<br>Puntuales, seguros y con choferes<br>locales experimentados.<br><br><span class='highlight-light'>Consultanos:</span> Estancias, programas y otros!",
+            "destinos-title": "Destinos", "contacto-title": "Contacto",
+            "btn-send": "ENVIAR CONSULTA",
+            "ph-name": "Nombre completo", "ph-email": "Correo electrónico",
+            "ph-msg": "Por favor, indícanos:\n• Origen y Destino\n• Fecha y Hora\n• Cantidad de pasajeros\n• Tipo de equipaje (ej: turismo, escalada, esquí)",
+            "footer-bookings": "Consultas / Reservas",
+            "footer-follow": "Seguinos",
+            "slides": [
+                {h1: "Trayectoria", p: "Más de 10 años recorriendo el sur"},
+                {h1: "Seguridad", p: "Unidades equipadas para el clima patagónico"},
+                {h1: "Puntualidad", p: "Tu itinerario es sagrado para nosotros"},
+                {h1: "Confort", p: "Viajes de larga distancia sin fatiga"},
+                {h1: "Experiencia", p: "Conocemos cada rincón de la ruta"},
+                {h1: "Paisajes", p: "Disfruta el camino mientras nosotros conducimos"},
+                {h1: "Compromiso", p: "Calidad de servicio en cada kilómetro"}
+            ]
+        },
+        en: {
+            "slogan": "Exploring Patagonia since 2014",
+            "nav-destinos": "Destinations", "nav-contacto": "Contact",
+            "servicios-title": "Services",
+            "servicios-desc": "All services are private.<br>Punctual, safe and with experienced<br>local drivers.<br><br><span class='highlight-light'>Contact us:</span> Estancias, programs and others!",
+            "destinos-title": "Destinations", "contacto-title": "Contact Us",
+            "btn-send": "SEND INQUIRY",
+            "ph-name": "Full Name", "ph-email": "Email Address",
+            "ph-msg": "Please let us know:\n• Origin and Destination\n• Date and Time\n• Number of passengers\n• Type of luggage (e.g., tourism, climbing, skiing)",
+            "footer-bookings": "Inquiries / Bookings",
+            "footer-follow": "Follow us",
+            "slides": [
+                {h1: "Track Record", p: "Over 10 years exploring the south"},
+                {h1: "Safety", p: "Units equipped for the Patagonian climate"},
+                {h1: "Punctuality", p: "Your itinerary is sacred to us"},
+                {h1: "Comfort", p: "Long-distance travel without fatigue"},
+                {h1: "Experience", p: "We know every corner of the route"},
+                {h1: "Landscapes", p: "Enjoy the view while we drive"},
+                {h1: "Commitment", p: "Quality service in every mile"}
+            ]
+        }
+    };
+
+    let currentLang = 'es';
+
+    function changeLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-key]').forEach(el => { el.innerHTML = texts[lang][el.getAttribute('data-key')]; });
+        document.querySelectorAll('[data-placeholder]').forEach(el => { el.placeholder = texts[lang][el.getAttribute('data-placeholder')]; });
+        generarSlides();
+    }
+
+    const sliderContainer = document.getElementById('slider-main');
+
+    function generarSlides() {
+        const activeSlide = document.querySelector('.slide.active');
+        const currentActiveIndex = activeSlide ? Array.from(document.querySelectorAll('.slide')).indexOf(activeSlide) : 0;
+        sliderContainer.innerHTML = '';
+        const imagenes = ['slider1.jpg', 'slider2.jpg', 'slider3.jpg', 'slider4.jpg', 'slider5.jpg', 'slider6.jpg', 'slider7.jpg'];
+        imagenes.forEach((img, i) => {
+            const slide = document.createElement('div');
+            slide.className = `slide ${i === currentActiveIndex ? 'active' : ''}`;
+            slide.style.backgroundImage = `url('img/${img}')`;
+            slide.innerHTML = `<div class="overlay"></div><div class="slide-content"><h1>${texts[currentLang].slides[i].h1}</h1><p>${texts[currentLang].slides[i].p}</p></div>`;
+            sliderContainer.appendChild(slide);
+        });
+    }
+
+    setInterval(() => {
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length === 0) return;
+        const active = document.querySelector('.slide.active');
+        let next = active.nextElementSibling || slides[0];
+        active.classList.remove('active');
+        next.classList.add('active');
+    }, 5000);
+
+    const contactForm = document.getElementById('contact-form');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    contactForm.addEventListener('submit', function() {
+        btnSubmit.disabled = true;
+        btnSubmit.innerText = currentLang === 'es' ? "ENVIANDO..." : "SENDING...";
+    });
+
+    window.onload = () => { changeLang('es'); };
+</script>
+</body>
+</html>

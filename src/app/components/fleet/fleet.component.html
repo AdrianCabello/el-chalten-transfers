@@ -1,0 +1,17 @@
+<section id="fleet" class="fleet">
+  <div class="container">
+    <h2 class="section-title">{{ t().fleetTitle }}</h2>
+    <div class="fleet-grid">
+      @for (v of vehicles; track v.nameKey) {
+        <article class="vehicle-card">
+          <div class="vehicle-image" [style.backgroundImage]="'url(' + v.image + ')'" [attr.aria-label]="t()[v.nameKey]"></div>
+          <div class="vehicle-content">
+            <h3>{{ t()[v.nameKey] }}</h3>
+            <p class="capacity">{{ t().capacity }}: {{ v.capacity }}</p>
+            <p class="description">{{ t()[v.descKey] }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

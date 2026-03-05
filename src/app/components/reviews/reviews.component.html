@@ -1,0 +1,18 @@
+<section id="reviews" class="reviews">
+  <div class="container">
+    <h2 class="section-title">{{ t().reviewsTitle }}</h2>
+    <div class="reviews-grid">
+      @for (r of reviews; track r.author) {
+        <article class="review-card">
+          <div class="stars" aria-label="{{ r.stars }} out of 5 stars">
+            @for (s of [1,2,3,4,5]; track s) {
+              <span class="star" [class.filled]="s <= r.stars">★</span>
+            }
+          </div>
+          <p class="review-text">"{{ r.text }}"</p>
+          <p class="review-author">— {{ r.author }}, {{ r.country }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

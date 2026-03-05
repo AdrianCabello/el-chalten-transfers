@@ -1,0 +1,20 @@
+<section id="routes" class="popular-routes">
+  <div class="container">
+    <h2 class="section-title">{{ t().popularRoutesTitle }}</h2>
+    <div class="routes-grid">
+      @for (route of routes; track route.from + route.to) {
+        <article class="route-card">
+          <div class="route-image" [style.backgroundImage]="'url(' + route.image + ')'" role="img" [attr.aria-label]="route.from + ' to ' + route.to"></div>
+          <div class="route-overlay"></div>
+          <div class="route-content">
+            <h3 class="route-title">{{ route.from }} → {{ route.to }}</h3>
+            <p class="route-duration">{{ route.duration }} {{ t().hours }}</p>
+            <a [href]="whatsAppUrl(route)" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm">
+              {{ t().routeConsult }}
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

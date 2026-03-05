@@ -1,0 +1,78 @@
+<section class="quick-form-section">
+  <div class="container">
+    <form class="quick-form" (ngSubmit)="checkAvailability()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="quick-from">{{ t().formFrom }}</label>
+          <input
+            id="quick-from"
+            type="text"
+            class="form-field"
+            [(ngModel)]="from"
+            name="from"
+            [placeholder]="'e.g. El Calafate Airport'"
+          />
+        </div>
+        <div class="form-group">
+          <label for="quick-to">{{ t().formTo }}</label>
+          <input
+            id="quick-to"
+            type="text"
+            class="form-field"
+            [(ngModel)]="to"
+            name="to"
+            [placeholder]="'e.g. El Chaltén'"
+          />
+        </div>
+        <div class="form-group">
+          <label for="quick-date">{{ t().formDate }}</label>
+          <input
+            id="quick-date"
+            type="date"
+            class="form-field"
+            [(ngModel)]="date"
+            name="date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="quick-time">{{ t().formTime }}</label>
+          <input
+            id="quick-time"
+            type="time"
+            class="form-field"
+            [(ngModel)]="time"
+            name="time"
+          />
+        </div>
+        <div class="form-group">
+          <label for="quick-passengers">{{ t().formPassengers }}</label>
+          <input
+            id="quick-passengers"
+            type="number"
+            min="1"
+            class="form-field"
+            [(ngModel)]="passengers"
+            name="passengers"
+            placeholder="1"
+          />
+        </div>
+        <div class="form-group">
+          <label for="quick-luggage">{{ t().formLuggage }}</label>
+          <select
+            id="quick-luggage"
+            class="form-field"
+            [(ngModel)]="luggage"
+            name="luggage"
+          >
+            <option value="">—</option>
+            <option value="Standard">Standard</option>
+            <option value="Trekking">Trekking</option>
+            <option value="Climbing">Climbing</option>
+            <option value="Ski">Ski</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary btn-submit">{{ t().btnCheckAvailability }}</button>
+    </form>
+  </div>
+</section>

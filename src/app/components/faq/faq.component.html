@@ -1,0 +1,18 @@
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="section-title">{{ t().faqTitle }}</h2>
+    <div class="faq-list">
+      @for (item of faqItems; track $index) {
+        <div class="faq-item" [class.open]="expanded === $index">
+          <button type="button" class="faq-question" (click)="toggle($index)" [attr.aria-expanded]="expanded === $index">
+            {{ t()[item.q] }}
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>{{ t()[item.a] }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

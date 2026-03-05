@@ -1,0 +1,119 @@
+.destinations-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('/destinos1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5%;
+  color: white;
+
+  // Dark overlay for better text readability
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 30%, rgba(0, 0, 0, 0.6));
+    z-index: 1;
+  }
+}
+
+.main-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  width: 100%;
+  max-width: 1200px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+}
+
+.services-col {
+  text-align: left;
+}
+
+.column-title {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+  display: inline-block;
+  font-size: 1.15rem;
+}
+
+.services-text {
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 2.2;
+  letter-spacing: 1px;
+}
+
+.highlight-accent {
+  color: var(--color-accent);
+  font-weight: 300;
+}
+
+.destinations-col {
+  text-align: left;
+}
+
+.destinations-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 400;
+    border-left: 2px solid rgba(52, 152, 219, 0.4);
+    padding-left: 10px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-left-color: var(--color-accent);
+      padding-left: 15px;
+    }
+
+    &.highlight {
+      color: #f1c40f;
+      font-weight: 700;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 900px) {
+  .destinations-hero {
+    min-height: auto;
+    padding: 80px 5% 40px 5%;
+    background-attachment: scroll;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .destinations-subgrid {
+    grid-template-columns: 1fr;
+  }
+}

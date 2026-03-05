@@ -1,0 +1,45 @@
+.reviews {
+  padding: 5rem 0;
+  background: #001225;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.review-card {
+  padding: 2rem;
+  background: rgba(0, 35, 71, 0.6);
+  border: 1px solid rgba(52, 152, 219, 0.2);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-accent);
+}
+
+.stars {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+}
+
+.star {
+  color: #ddd;
+
+  &.filled {
+    color: var(--color-highlight);
+  }
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.review-author {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}

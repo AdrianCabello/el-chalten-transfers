@@ -1,0 +1,91 @@
+.site-footer {
+  background-color: var(--color-footer);
+  color: var(--color-white);
+  padding: 3rem 5%;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 0.8fr;
+  gap: 2.5rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footer-col-left,
+.footer-col-mid {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 1.5rem;
+}
+
+.footer-name {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.footer-label {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand {
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.footer-detail {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+
+  a {
+    color: var(--color-text-muted);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}
+
+.footer-follow {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.instagram-link {
+  display: inline-block;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-col-left,
+  .footer-col-mid {
+    border-right: none;
+    padding-right: 0;
+  }
+}

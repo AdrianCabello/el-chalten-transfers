@@ -1,0 +1,51 @@
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2 class="section-title">{{ t().contactTitle }}</h2>
+    <form
+      id="contact-form"
+      class="contact-form"
+      action="https://formspree.io/f/xjvnqkwe"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="El Chaltén Transfers - Consulta" />
+      <div class="form-row">
+        <label for="contact-name">{{ t().contactName }}</label>
+        <input
+          id="contact-name"
+          type="text"
+          name="name"
+          class="form-field"
+          [(ngModel)]="name"
+          required
+          minlength="3"
+          [placeholder]="t().contactName"
+        />
+      </div>
+      <div class="form-row">
+        <label for="contact-email">{{ t().contactEmail }}</label>
+        <input
+          id="contact-email"
+          type="email"
+          name="email"
+          class="form-field"
+          [(ngModel)]="email"
+          required
+          [placeholder]="t().contactEmail"
+        />
+      </div>
+      <div class="form-row">
+        <label for="contact-msg">{{ t().contactMessage }}</label>
+        <textarea
+          id="contact-msg"
+          name="message"
+          class="form-field"
+          rows="8"
+          [(ngModel)]="message"
+          required
+          [placeholder]="t().contactMessagePlaceholder"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn-primary btn-submit">{{ t().btnSendInquiry }}</button>
+    </form>
+  </div>
+</section>
