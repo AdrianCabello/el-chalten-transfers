@@ -14,7 +14,10 @@
 }
 
 .brand {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: 'logo text';
+  column-gap: 15px;
   align-items: center;
   flex-shrink: 0;
   color: inherit;
@@ -26,34 +29,43 @@
 }
 
 .logo {
-  height: 60px;
+  grid-area: logo;
+  height: 48px;
   width: auto;
+  align-self: center;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }
 
 .brand-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 15px;
+  grid-area: text;
+  position: relative;
+  display: block;
+  width: max-content;
+  padding-bottom: 10px;
 }
 
 .brand-name {
+  display: block;
   font-weight: 300;
-  font-size: 1.31rem;
-  letter-spacing: 4px;
+  font-size: 1.28rem;
+  letter-spacing: 3.8px;
   text-transform: uppercase;
   line-height: 1;
-  margin-bottom: 4px;
 }
 
 .slogan {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: calc(100% + 18px);
+  overflow: visible;
   font-weight: 400;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--color-accent);
+  letter-spacing: 0.18px;
+  color: rgba(52, 152, 219, 0.88);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -89,10 +101,6 @@
     &:hover,
     &.active {
       opacity: 1;
-    }
-
-    &.active {
-      outline: 2px solid var(--color-accent);
     }
 
     img {

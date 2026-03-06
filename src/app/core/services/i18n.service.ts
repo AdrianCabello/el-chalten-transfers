@@ -293,12 +293,8 @@ export class I18nService {
       const stored = localStorage.getItem(STORAGE_KEY) as Lang | null;
       if (stored === 'es' || stored === 'en') {
         this.currentLang.set(stored);
-      } else {
-        const browserLang = navigator.language ?? (navigator as { userLanguage?: string }).userLanguage ?? '';
-        if (browserLang.toLowerCase().startsWith('es')) {
-          this.currentLang.set('es');
-        }
       }
+      // Default is English; user can change via the language selector
     }
   }
 

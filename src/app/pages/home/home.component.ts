@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { ServicesComponent } from '../../components/services/services.component';
-import { WhyChooseUsComponent } from '../../components/why-choose-us/why-choose-us.component';
 import { DestinationsComponent } from '../../components/destinations/destinations.component';
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -14,7 +13,6 @@ import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/wh
     NavbarComponent,
     HeroComponent,
     ServicesComponent,
-    WhyChooseUsComponent,
     DestinationsComponent,
     ContactFormComponent,
     FooterComponent,
@@ -36,7 +34,6 @@ import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/wh
           </div>
         </div>
       </section>
-      <app-why-choose-us />
       <app-contact-form />
       <app-footer />
     </main>
@@ -73,9 +70,9 @@ import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/wh
         bottom: 0;
         background: linear-gradient(
           180deg,
-          rgba(26, 42, 58, 0.95) 0%,
-          rgba(0, 35, 71, 0.9) 50%,
-          rgba(0, 0, 0, 0.6) 100%
+          rgba(26, 42, 58, 0.55) 0%,
+          rgba(0, 35, 71, 0.45) 50%,
+          rgba(0, 0, 0, 0.3) 100%
         );
         z-index: 1;
       }

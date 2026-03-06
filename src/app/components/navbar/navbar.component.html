@@ -7,9 +7,7 @@
     </div>
   </a>
   <nav class="nav-links">
-    <a href="#services">{{ t().navServices }}</a>
     <a href="#destinations">{{ t().navDestinations }}</a>
-    <a href="#why-us">{{ t().navWhyUs }}</a>
     <a href="#contact">{{ t().navContact }}</a>
     <div class="lang-selector">
       <button type="button" (click)="setLang('es')" [class.active]="lang() === 'es'" title="Español" aria-label="Español">
@@ -35,9 +33,7 @@
   ></div>
   <nav class="nav-mobile open">
     <a href="#hero" (click)="closeMenu()">{{ t().navHome }}</a>
-    <a href="#services" (click)="closeMenu()">{{ t().navServices }}</a>
     <a href="#destinations" (click)="closeMenu()">{{ t().navDestinations }}</a>
-    <a href="#why-us" (click)="closeMenu()">{{ t().navWhyUs }}</a>
     <a href="#contact" (click)="closeMenu()">{{ t().navContact }}</a>
     <div class="lang-selector-mobile">
       <button type="button" (click)="setLang('es'); closeMenu()" [class.active]="lang() === 'es'">ES</button>
