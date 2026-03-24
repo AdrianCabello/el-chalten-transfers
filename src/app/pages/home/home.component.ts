@@ -50,15 +50,15 @@ import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/wh
       .services-destinations-combined {
         position: relative;
         width: 100%;
-        min-height: 100vh;
+        min-height: calc(100vh + 140px);
         background-image: url('/destinos1.jpg');
         background-size: cover;
-        background-position: center;
+        background-position: center top;
         background-attachment: fixed;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 80px 0;
+        padding: 160px 0 140px;
         color: white;
       }
       .services-destinations-combined::before {
@@ -68,12 +68,7 @@ import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/wh
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(26, 42, 58, 0.55) 0%,
-          rgba(0, 35, 71, 0.45) 50%,
-          rgba(0, 0, 0, 0.3) 100%
-        );
+        background: transparent;
         z-index: 1;
       }
       .services-destinations-grid {
@@ -94,6 +89,7 @@ import { WhatsappFloatingComponent } from '../../components/whatsapp-floating/wh
         .services-destinations-combined {
           min-height: auto;
           padding: 80px 0 40px;
+          background-position: center;
           background-attachment: scroll;
         }
         .services-destinations-grid {

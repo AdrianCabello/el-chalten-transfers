@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 
@@ -10,6 +11,7 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
+  private readonly document = inject(DOCUMENT);
   private readonly meta = inject(Meta);
   private readonly title = inject(Title);
 
@@ -28,5 +30,19 @@ export class App implements OnInit {
     this.meta.updateTag({ property: 'og:image', content: '/Icons/android-chrome-512x512.png' });
     this.meta.updateTag({ property: 'og:image:width', content: '512' });
     this.meta.updateTag({ property: 'og:image:height', content: '512' });
+
+    if (!this.document.getElementById('organization-json-ld')) {
+      const script = this.document.createElement('script');
+      script.id = 'organization-json-ld';
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'UP Transfers Patagonia',
+        url: 'https://elchaltentransfers.com',
+        logo: 'https://elchaltentransfers.com/logo.png',
+      });
+      this.document.head.appendChild(script);
+    }
   }
 }

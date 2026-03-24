@@ -1,5 +1,5 @@
-import { Injectable, signal, computed, PLATFORM_ID, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable, signal, computed, PLATFORM_ID, inject, effect } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 export type Lang = 'es' | 'en';
 
@@ -173,7 +173,8 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     contactEmail: 'Email',
     contactPhone: 'Phone',
     contactMessage: 'Message',
-    contactMessagePlaceholder: 'Write your message here. Include origin, destination, date, passengers and any details.',
+    contactMessagePlaceholder:
+      'Write your message here. Include origin, destination, date, number of passengers and luggage type (e.g. Tourist, Climbing, Ski).',
     btnSendInquiry: 'Send Inquiry',
     sending: 'Sending...',
     contactSuccess: 'Thank you! We will contact you soon.',
@@ -187,7 +188,7 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     footerBookings: 'Inquiries / Bookings',
     footerFollow: 'Follow us',
     whatsappFloatingText: 'Book via WhatsApp',
-    whatsappDefaultMessage: 'Hello, I would like to ask about a transfer in El Chaltén.',
+    whatsappDefaultMessage: 'Hello, I would like to ask about a transfer.',
   },
   es: {
     navHome: 'Inicio',
@@ -262,7 +263,8 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     contactEmail: 'Email',
     contactPhone: 'Teléfono',
     contactMessage: 'Mensaje',
-    contactMessagePlaceholder: 'Escribe tu mensaje. Incluye origen, destino, fecha, pasajeros y cualquier detalle.',
+    contactMessagePlaceholder:
+      'Escribe tu mensaje. Incluye origen, destino, fecha, cantidad de pasajeros y tipo de equipaje (ej: Turistico, Escalada, Esqui).',
     btnSendInquiry: 'Enviar consulta',
     sending: 'Enviando...',
     contactSuccess: '¡Gracias! Te contactaremos pronto.',
@@ -276,13 +278,14 @@ const TRANSLATIONS: Record<Lang, Translations> = {
     footerBookings: 'Consultas / Reservas',
     footerFollow: 'Seguinos',
     whatsappFloatingText: 'Reservar por WhatsApp',
-    whatsappDefaultMessage: 'Hola, me gustaría consultar por un transfer en El Chaltén.',
+    whatsappDefaultMessage: 'Hola, me gustaría consultar por un transfer.',
   },
 };
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly document = inject(DOCUMENT);
   private readonly currentLang = signal<Lang>('en');
 
   readonly lang = this.currentLang.asReadonly();
@@ -294,7 +297,14 @@ export class I18nService {
       if (stored === 'es' || stored === 'en') {
         this.currentLang.set(stored);
       }
-      // Default is English; user can change via the language selector
+
+      effect(() => {
+        const lang = this.currentLang();
+        const root = this.document.documentElement;
+        root.lang = lang;
+        root.setAttribute('translate', 'no');
+        this.document.body?.classList.add('notranslate');
+      });
     }
   }
 

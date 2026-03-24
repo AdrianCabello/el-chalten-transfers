@@ -1,12 +1,13 @@
 <header class="navbar">
   <a href="#hero" class="brand" aria-label="El Chaltén Transfers - Home">
     <img src="logo.png" alt="Logo UP Transfers" class="logo" />
-    <div class="brand-text">
-      <span class="brand-name">Transfers</span>
+    <div class="brand-text notranslate" translate="no">
+      <span class="brand-name notranslate" translate="no">Transfers</span>
       <span class="slogan">{{ t().slogan }}</span>
     </div>
   </a>
   <nav class="nav-links">
+    <a href="#services">{{ t().navServices }}</a>
     <a href="#destinations">{{ t().navDestinations }}</a>
     <a href="#contact">{{ t().navContact }}</a>
     <div class="lang-selector">
@@ -32,7 +33,7 @@
     aria-label="Close menu"
   ></div>
   <nav class="nav-mobile open">
-    <a href="#hero" (click)="closeMenu()">{{ t().navHome }}</a>
+    <a href="#services" (click)="closeMenu()">{{ t().navServices }}</a>
     <a href="#destinations" (click)="closeMenu()">{{ t().navDestinations }}</a>
     <a href="#contact" (click)="closeMenu()">{{ t().navContact }}</a>
     <div class="lang-selector-mobile">

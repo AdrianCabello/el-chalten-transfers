@@ -60,6 +60,16 @@
   opacity: 0.95;
 }
 
+@media (min-width: 901px) {
+  .hero-slide-label {
+    font-size: clamp(1.62rem, 3.6vw, 1.8rem);
+  }
+
+  .hero-slide-desc {
+    font-size: clamp(1.35rem, 2.7vw, 1.53rem);
+  }
+}
+
 .hero-content {
   position: absolute;
   inset: 0;
