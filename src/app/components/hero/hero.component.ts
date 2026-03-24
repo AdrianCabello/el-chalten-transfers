@@ -55,6 +55,6 @@ export class HeroComponent {
         this.currentIndex.update((i) => (i + 1) % slides.length);
       }, 5000);
       return () => clearInterval(interval);
-    }, { allowSignalWrites: true });
+    });
   }
 }

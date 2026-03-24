@@ -1,0 +1,19 @@
+<app-navbar />
+<main>
+  <app-hero />
+  <section id="destinations" class="services-destinations-combined">
+    <div class="container">
+      <div class="services-destinations-grid">
+        <div class="services-col" id="services">
+          <app-services [embedded]="true" />
+        </div>
+        <div class="destinations-col">
+          <app-destinations [embedded]="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-contact-form />
+  <app-footer />
+</main>
+<app-whatsapp-floating />
