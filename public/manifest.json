@@ -1,7 +1,7 @@
 {
   "name": "UP Transfers Patagonia",
   "short_name": "UP Transfers",
-  "description": "Private transfers between El Calafate, El Chaltén and Patagonia destinations.",
+  "description": "Transfers privados en El Chaltén, Aeropuerto El Calafate y destinos de Patagonia.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#002347",
